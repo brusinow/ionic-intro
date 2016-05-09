@@ -1,9 +1,15 @@
 <ion-view view-title="Account">
   <ion-content>
     <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
+    <div class="row">
+      <div class="col"><a class = "my-button my-button-raised my-button-block my-button-pill settings-buttons" ng-click ="openNewEventModal()">Add an Event</a></div>
+      <div class="col"><a class = "my-button my-button-raised my-button-block my-button-pill settings-buttons" ng-click = "openEditEventModal()">Edit an Event</a></div>
+    </div>
+    <div class="row">
+      <div class="col"><a class = "my-button my-button-raised my-button-block my-button-pill settings-buttons" ng-click ="openModal()">Add an Itin Item</a></div>
+      <div class="col"><a class = "my-button my-button-raised my-button-block my-button-pill settings-buttons" ng-click = "openModal()">Edit an Itin Item</a></div>
+    </div>
+   
     </ion-list>
   </ion-content>
 </ion-view>

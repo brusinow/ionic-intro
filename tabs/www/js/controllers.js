@@ -21,10 +21,90 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
+
+.controller('AccountCtrl', function($scope, $ionicModal) {
   $scope.settings = {
     enableFriends: true
   };
+  $ionicModal.fromTemplateUrl('templates/newEventModal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.newEventModal = modal;
+  });
+  $scope.openNewEventModal = function() {
+    $scope.newEventModal.show();
+  };
+  $scope.closeNewEventModal = function() {
+    $scope.newEventModal.hide();
+  };
+  // Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.newEventModal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('newEventModal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('newEventModal.removed', function() {
+    // Execute action
+  });
+
+  $ionicModal.fromTemplateUrl('templates/editEventModal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.editEventModal = modal;
+  });
+  $scope.openEditEventModal = function() {
+    $scope.editEventModal.show();
+  };
+  $scope.closeEditEventModal = function() {
+    $scope.editEventModal.hide();
+  };
+  // Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.editEventModal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('editEventModal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('editEventModal.removed', function() {
+    // Execute action
+  });
 })
 
-.controller('ListCtrl', function($scope) {});
+
+.controller('ListCtrl', function($scope) {})
+
+
+.controller('OMDBCtrl', ['$scope', '$http', function($scope, $http) {
+ $scope.searchTerm = { q:'' };
+ $scope.movies = [];
+$scope.search = function() {
+  console.log($scope.searchTerm)
+  console.log("Search term is: ", $scope.searchTerm.q);
+  var req = {
+    url: "http://www.omdbapi.com",
+    method: 'GET',
+    params: {
+      s: $scope.searchTerm.q,
+    }
+  }
+
+  $http(req).then(function success(res) {
+    console.log(res)
+   $scope.movies = res.data.Search;
+    console.log($scope.movies);
+  }, function error(res) {
+    //do something if the response has an error
+    console.log(res);
+  });
+};
+}]);
+
+
+

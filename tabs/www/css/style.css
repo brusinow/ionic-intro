@@ -1,1 +1,15 @@
 /* Empty. Add your own CSS if you like */
+
+
+.button-border {
+  border: 1px solid #555555;
+}
+
+.settings-buttons {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.center-text {
+  text-align: center;
+}
