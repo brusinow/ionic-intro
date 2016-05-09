@@ -105,9 +105,12 @@ $scope.search = function() {
 
 
 .controller('ListCtrl', ['$scope', '$http', function($scope, $http) {
+  
  $scope.currentWeather = { q:'' };
  $scope.result = [];
 $scope.search = function() {
+  var myEl = angular.element( document.querySelector( '#temp-fahrenheit' ) );
+  myEl.text('');
   var req = {
     url: "http://api.openweathermap.org/data/2.5/weather",
     method: 'GET',
@@ -121,8 +124,11 @@ $scope.search = function() {
   }
 
   $http(req).then(function success(res) {
+   
+   
     console.log(res)
    $scope.result = res.data;
+    myEl.append(' °F');
     console.log($scope.result);
   }, function error(res) {
     //do something if the response has an error

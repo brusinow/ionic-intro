@@ -16,7 +16,7 @@
 
             <h3 class="center-text">{{result.name}}</h3>
             <img style="display: block;" class="center" ng-src="http://openweathermap.org/img/w/{{result.weather[0].icon}}.png" />
-        <h4 class="center-text">{{result.main.temp  | number:1}} °F</h4>
+        <h4 id="temp-result" class="center-text">{{result.main.temp  | number:1}}<span id="temp-fahrenheit"></span></h4>
        
 </ion-content>
 </ion-view>
