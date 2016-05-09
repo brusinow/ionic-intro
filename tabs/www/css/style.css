@@ -13,3 +13,11 @@
 .center-text {
   text-align: center;
 }
+
+.center {
+  margin: 0 auto;
+}
+
+.input-label-small {
+  font-size: 11px;
+}

@@ -78,9 +78,6 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('ListCtrl', function($scope) {})
-
-
 .controller('OMDBCtrl', ['$scope', '$http', function($scope, $http) {
  $scope.searchTerm = { q:'' };
  $scope.movies = [];
@@ -104,7 +101,34 @@ $scope.search = function() {
     console.log(res);
   });
 };
-}]);
+}])
 
+
+.controller('ListCtrl', ['$scope', '$http', function($scope, $http) {
+ $scope.currentWeather = { q:'' };
+ $scope.result = [];
+$scope.search = function() {
+  var req = {
+    url: "http://api.openweathermap.org/data/2.5/weather",
+    method: 'GET',
+    params: {
+      q: $scope.currentWeather.q,
+      mode: 'json',
+      units: 'imperial',
+      cnt: '7',
+      appid: '36caab9ef2fd3b78e6d27555e15958b0'
+    }
+  }
+
+  $http(req).then(function success(res) {
+    console.log(res)
+   $scope.result = res.data;
+    console.log($scope.result);
+  }, function error(res) {
+    //do something if the response has an error
+    console.log(res);
+  });
+};
+}]);
 
 

@@ -24,8 +24,9 @@
 <div ng-repeat="movie in movies track by $index">
 <img ng-src="{{movie.Poster}}" style="width: 30px;" alt="Description" />
   {{movie.Title}}
-  {{movie.Year}}
+  <span style="font-weight: bold;">{{movie.Year}}</span>
 </div>
 
   </ion-content>
 </ion-view>
+
